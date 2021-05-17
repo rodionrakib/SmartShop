@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\SliderController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,8 @@ use App\Http\Controllers\Site\ProductController as FrontProductController;
 
 
 use App\Http\Controllers\Site\CartController;
+use App\Http\Controllers\Site\RatingController;
+
 use App\Http\Controllers\Site\CheckoutController;
 use App\Http\Controllers\Site\WishlistController;
 use App\Http\Controllers\Site\AccountController;
@@ -62,22 +65,27 @@ Route::get('success',function(){
 Route::post('/wishlists',[WishlistController::class,'store'])->name('wishlists.store')->middleware('auth');
 Route::delete('/wishlists/{product}',[WishlistController::class,'destroy'])->name('wishlists.destroy')->middleware('auth');
 
+Route::post('/products/{product}/ratings', [RatingController::class,'store'])->name('products.ratings.store');
 
 
 Route::get('/categories/{slug1}/{slug2?}/{slug3?}', [FrontCategoryController::class,'show'])->name('category.show');
 Route::get('/product/{slug}', [FrontProductController::class,'show'])->name('product.show');
 
+Route::post('/products/{product}/ratings', [RatingController::class,'store'])->name('products.ratings.store');
 
 
 Route::prefix('account')->middleware('auth')->group(function(){
 
 
-	Route::get('/dashboard',[AccountController::class,'dashboard'])->name('dashboard');
+	// Route::get('/dashboard',[AccountController::class,'dashboard'])->name('dashboard');
+
 	Route::get('/orders',[AccountController::class,'orders'])->name('account-orders');
 	Route::get('/wishlist',[AccountController::class,'wishlist'])->name('wishlist');
 	Route::get('/account-details',[AccountController::class,'details'])->name('account-details');
 	Route::patch('/account-details',[AccountController::class,'update'])->name('account-details');
 	Route::post('/order-now',[AccountController::class,'orderNow'])->name('order-now');
+
+
 
 });
 
@@ -125,6 +133,7 @@ Route::prefix('admin')->name('admin.')->middleware(['employee'])->group(function
 	Route::resource('attributes',AttributeController::class);
 	Route::resource('brands',BrandController::class);
 	Route::resource('orders',OrderController::class);
+	Route::resource('sliders',SliderController::class);
 
 
 

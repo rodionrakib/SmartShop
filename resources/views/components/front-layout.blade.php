@@ -28,6 +28,8 @@
          href="/assets/img/favicon.png" />
       <meta name="twitter:card"
          content="summary_large_image" />
+      <meta name="csrf-token" content="{{ csrf_token() }}" />
+
       <meta name="twitter:site"
          content="@tailwindmade" />
       <link rel="stylesheet"
@@ -42,6 +44,23 @@
          href="{{asset('/assets/styles/main.min.css')}}"
          media="screen"
          crossorigin="anonymous" />
+      <!-- Facebook Pixel Code -->
+      <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '458533281916325');
+        fbq('track', 'PageView');
+      </script>
+      <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=458533281916325&ev=PageView&noscript=1"
+      /></noscript>
+      <!-- End Facebook Pixel Code -->
    </head>
    <body x-data="{
       modal: false,
@@ -85,7 +104,7 @@
                      alt="logo" />
                   </a>
                   <div class="flex items-center">
-                     <a href="/account/dashboard"
+                     <a href="{{route('account-details')}}"
                         class="border-2 transition-all border-transparent hover:border-primary rounded-full p-2 sm:p-4 group">
                      <img src="/assets/img/icons/icon-user.svg"
                         class="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 block group-hover:hidden"

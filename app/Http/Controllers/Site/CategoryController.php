@@ -17,7 +17,7 @@ class CategoryController extends Controller
     	elseif ($slug2) {$slug = $slug2;}
     	else{$slug = $slug1;}
 
-    	$category = Category::with('products')->where('slug', $slug)->where('menu', 1)->first();
+    	$category = Category::with('products')->where('slug', $slug)->first();
     	$breadCrumb = $category->getBreadcrumb();
     	$products = $category->products;
 	    return view('site.pages.category', compact('category','products','breadCrumb')); 

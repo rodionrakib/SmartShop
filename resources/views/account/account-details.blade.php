@@ -46,8 +46,9 @@
                   </div>
                   <div class="">
                      <label for="password"
-                        class="font-hk text-secondary block mb-2">Password</label>
+                        class="font-hk text-secondary block mb-2">New Password</label>
                      <input type="password"
+                        name="password" 
                         class="form-input"
                         value=""
                         id="password" />

@@ -1,5 +1,8 @@
 <x-layout>
-<a href="{{route('admin.products.create')}}" class="btn btn-primary btn-lg active" style="margin-left: 30px" role="button" aria-pressed="true">Add Product</a> 
+ <div class="row">
+    <a class="btn btn-danger" href="{{ route('admin.products.create') }}"><i class="fa fa-fw fa-lg fa-check-circle"></i>Add New</a> 
+</div>
+<br>
 
 <div class="tile">
     <div class="tile-body">

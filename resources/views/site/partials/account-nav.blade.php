@@ -1,11 +1,11 @@
 <div class="lg:w-1/4">
    <p class="font-butler text-secondary text-2xl sm:text-3xl lg:text-4xl pb-6">My Account</p>
    <div class="pl-3 flex flex-col">
-      <a href="/account/dashboard"
+     <!--  <a href="/account/dashboard"
          class="transition-all hover:font-bold hover:text-primary px-4 py-3 border-l-2 border-primary-lighter hover:border-primary  font-hk 
          {{ Route::currentRouteName() == 'dashboard'  ? 'text-primary' : 'text-grey-darkest' }} 
 
-         ">Dashboard</a>
+         ">Dashboard</a> -->
       <a href="/account/orders"
          class="transition-all hover:font-bold hover:text-primary px-4 py-3 border-l-2 border-primary-lighter hover:border-primary  font-hk text-grey-darkest ">Orders</a>
       <a href="/account/wishlist"

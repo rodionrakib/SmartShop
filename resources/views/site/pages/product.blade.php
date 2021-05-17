@@ -1,5 +1,46 @@
 <x-front-layout>
+<style type="text/css">
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
+fieldset, label { margin: 0; padding: 0; }
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #f35627;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #f35627;  }
+</style>
 <div class="container">
    
    <!-- {!! $breadCrumb !!} -->
@@ -49,21 +90,17 @@
          <div class="border-b border-grey-dark mb-8">
             <div class="flex items-center">
                <h2 class=" font-butler text-3xl md:text-4xl lg:text-4.5xl">{{$product->name}}</h2>
-               <p class="bg-primary rounded-full ml-8 px-5 py-2 leading-none font-hk font-bold text-white uppercase text-sm">{{$product->percent_discount}} % off</p>
+               <p class="bg-primary rounded-full ml-8 px-5 py-2 leading-none font-hk font-bold text-white uppercase text-sm">{{$product->percent_discount}}% off</p>
             </div>
             <div class="flex items-center pt-3">
                <span class="font-hk text-secondary text-2xl">৳ {{$product->special_price}}</span>
                <span class="font-hk text-grey-darker text-xl line-through pl-5">৳ {{$product->price}}</span>
             </div>
             <div class="flex items-center pt-3 pb-8">
-               <div class="flex items-center">
-                  <i class="bx bxs-star text-primary"></i>
-                  <i class="bx bxs-star text-primary"></i>
-                  <i class="bx bxs-star text-primary"></i>
-                  <i class="bx bxs-star text-primary"></i>
-                  <i class="bx bxs-star text-primary"></i>
-               </div>
-               <span class="font-hk text-sm text-secondary ml-2">(45)</span>
+
+           
+               {!! $product->starsAvg() !!}
+               <span class="font-hk text-sm text-secondary ml-2">({{$product->ratings()->count()}})</span>
             </div>
          </div>
          <div class="flex pb-5">
@@ -101,7 +138,7 @@
                                     @if ($attributeValue->attribute_id == $attribute->id)
                                         <option
                                             data-price="{{ $attributeValue->price }}"
-                                            value="{{ $attributeValue->value }}"> {{ ucwords($attributeValue->value . ' +'. $attributeValue->price) }}
+                                            value="{{ $attributeValue->value }}"> {{ ucwords($attributeValue->value ) }}
                                         </option>
                                     @endif
                                 @endforeach
@@ -164,6 +201,7 @@
          </p>
       </div>
    </div>
+
    <div class="pb-16 sm:pb-20 md:pb-24"
       x-data="{ activeTab: 'description' }">
       <div class="tabs flex flex-col sm:flex-row"
@@ -193,90 +231,89 @@
          
          <div :class="{ 'active': activeTab === 'reviews' }"
             class="tab-pane bg-grey-light py-10 md:py-16 transition-opacity"
-            role="tabpanel">
+            role="tabpanel" id="review-tab">
+            @forelse($product->ratings as $review)
             <div class="w-5/6 mx-auto border-b border-grey-darker pb-8 text-center sm:text-left">
                <div class="flex justify-center sm:justify-start items-center pt-3 xl:pt-5">
+                  {!! $review->stars() !!}
+                  <!-- <i class="bx bxs-star text-primary"></i>
                   <i class="bx bxs-star text-primary"></i>
                   <i class="bx bxs-star text-primary"></i>
                   <i class="bx bxs-star text-primary"></i>
-                  <i class="bx bxs-star text-primary"></i>
-                  <i class="bx bxs-star text-primary"></i>
+                  <i class="bx bxs-star text-primary"></i> -->
                </div>
-               <p class="font-hkbold text-secondary text-lg pt-3">Perfect for everyday use</p>
-               <p class="font-hk text-secondary pt-4 lg:w-5/6 xl:w-2/3">I loooveeeee this product!!! It feels so soft and smells like real leather!!! I ordered this fancy backpack looking for something that can be used at work and, at the same time, after work; and I found it.  Honestly.. Amazing!!</p>
+               <p class="font-hk text-secondary pt-4 lg:w-5/6 xl:w-2/3">{{$review->message}}</p>
                <div class="flex justify-center sm:justify-start items-center pt-3">
-                  <p class="font-hk text-grey-darkest text-sm"><span>By</span> Melanie Ashwood</p>
+                  <p class="font-hk text-grey-darkest text-sm"><span>By</span>{{$review->name}}</p>
                   <span class="font-hk text-grey-darkest text-sm block px-4">.</span>
-                  <p class="font-hk text-grey-darkest text-sm">6 days ago</p>
+                  <p class="font-hk text-grey-darkest text-sm">{{$review->created_at->diffForHumans()}}</p>
                </div>
             </div>
-            <div class="w-5/6 mx-auto border-b border-transparent pb-8 text-center sm:text-left">
-               <div class="flex justify-center sm:justify-start items-center pt-3 xl:pt-5">
-                  <i class="bx bxs-star text-primary"></i>
-                  <i class="bx bxs-star text-primary"></i>
-                  <i class="bx bxs-star text-primary"></i>
-                  <i class="bx bxs-star text-primary"></i>
-                  <i class="bx bxs-star text-primary"></i>
-               </div>
-               <p class="font-hkbold text-secondary text-lg pt-3">Gift for my girlfriend</p>
-               <p class="font-hk text-secondary pt-4 lg:w-5/6 xl:w-2/3">I paid this thing thinking about my girlfriend’s birthday present, however I had my doubts cuz’ she is kind of picky. But Seriously, from now on, Elyssi is my best friend! She loved it!! She’s crazy about it!  DISCLAIMER: It is smaller than it appears. </p>
-               <div class="flex justify-center sm:justify-start items-center pt-3">
-                  <p class="font-hk text-grey-darkest text-sm"><span>By</span> Jake Houston</p>
-                  <span class="font-hk text-grey-darkest text-sm block px-4">.</span>
-                  <p class="font-hk text-grey-darkest text-sm">4 days ago</p>
-               </div>
+            @empty
+            <div class="w-5/6 mx-auto border-b border-grey-darker pb-8 text-center sm:text-left">
+               <p class="font-hk text-secondary pt-4 lg:w-5/6 xl:w-2/3">Be the first one to review</p>
             </div>
-            <form class="w-5/6 mx-auto">
+            @endforelse
+
+            @auth  
+            <form id="review" method="post" class="w-5/6 mx-auto">
+               
                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-5 pt-10">
                   <div class="w-full">
                      <label class="font-hk text-secondary text-sm block mb-2"
-                        for="name">Name</label>
+                        for="review_title">Name</label>
                      <input type="text"
-                        placeholder="Enter your Name"
-                        class="form-input"
-                        id="name" />
-                  </div>
-                  <div class="w-full pt-10 sm:pt-0">
-                     <label class="font-hk text-secondary text-sm block mb-2"
-                        for="email">Email address</label>
-                     <input type="email"
-                        placeholder="Enter your email"
-                        class="form-input "
-                        id="email" />
-                  </div>
-               </div>
-               <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-5 pt-10">
-                  <div class="w-full">
-                     <label class="font-hk text-secondary text-sm block mb-2"
-                        for="review_title">Review Title</label>
-                     <input type="text"
+                        name="full_name" 
+                        value="{{ auth()->check() ? auth()->user()->name : '' }}" 
                         placeholder="Enter your review title"
                         class="form-input "
                         id="review_title" />
                   </div>
+                
                   <div class="w-full pt-10 sm:pt-0">
                      <label class="font-hk text-secondary text-sm block mb-2">Rating</label>
-                     <div class="flex pt-4">
-                        <i class="bx bxs-star text-grey-darker text-xl pr-1"></i>
-                        <i class="bx bxs-star text-grey-darker text-xl pr-1"></i>
-                        <i class="bx bxs-star text-grey-darker text-xl pr-1"></i>
-                        <i class="bx bxs-star text-grey-darker text-xl pr-1"></i>
-                        <i class="bx bxs-star text-grey-darker text-xl"></i>
-                     </div>
+                     <fieldset class="rating" >
+                         <input type="radio" id="star5" value="5" name="rating" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+
+                        
+
+                         <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+
+                         
+
+                         <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+
+                        
+                         <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+
+                         <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                         <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                     </fieldset>
                   </div>
                </div>
                <div class="sm:w-12/25 pt-10">
                   <label for="message"
                      class="font-hk text-secondary text-sm block mb-2">Review Message</label>
                   <textarea placeholder="Write your review here"
+                     name="message" 
                      class="form-textarea h-28"
                      id="message"></textarea>
                </div>
+               <button type="submit" 
+                  class="btn btn-primary mt-4">Submit Review</button>
+            
             </form>
-            <div class="w-5/6 mx-auto pt-8 md:pt-10 pb-4 text-center sm:text-left">
-               <a href="/"
-                  class="btn btn-primary">Submit Review</a>
-            </div>
+            
+            @endauth
+            @guest
+            <div class="w-5/6 mx-auto mt-3" >
+             <p class="font-hk text-secondary">
+                        
+                        <a href="/login"
+                            class="font-hk text-primary">Log in  to leave a review</a>
+                    </p>
+                 </div>
+            @endguest
          </div>
       </div>
    </div>
@@ -291,12 +328,12 @@
          <div class="glide__track"
             data-glide-el="track">
             <div class="pt-12 relative glide__slides">
-               @foreach($related as $product)
+               @foreach($related as $relatedproduct)
                <div class="relative group glide__slide">
                   <div class="sm:px-5 lg:px-4">
                      <div class="relative rounded flex justify-center items-center">
                         <div class="aspect-w-1 aspect-h-1 w-full">
-                           <img src="{{$product->getThumbPath()}}"
+                           <img src="{{$relatedproduct->getThumbPath()}}"
                               alt="product image"
                               class="object-cover" />
                         </div>
@@ -316,7 +353,7 @@
                               alt="icon cart" />
                            </button>
                            </form>
-                            <a href="{{route('product.show',['slug' => $product->slug])}}"
+                            <a href="{{route('product.show',['slug' => $relatedproduct->slug])}}"
                                 class="bg-white hover:bg-primary-light rounded-full p-3 flex items-center transition-all mr-3">
                             <img src="/assets/img/icons/icon-search.svg"
                                 class="h-6 w-6"
@@ -324,7 +361,7 @@
                             </a>
                             <form method="POST" action="{{route('wishlists.store')}}">
                             @csrf  
-                            <input type="hidden" name="product_id" value="{{$product->id}}">  
+                            <input type="hidden" name="product_id" value="{{$relatedproduct->id}}">  
                             <button type="submit" 
                                 class="bg-white hover:bg-primary-light rounded-full p-3 flex items-center transition-all">
                             <img src="/assets/img/icons/icon-heart.svg"
@@ -392,7 +429,82 @@
         <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.min.js"
                 defer></script>
 
+
+</script>
+
+@section('js')
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
         <!-- <script src="{{asset('/assets/js/main.js')}}"></script> -->
+        <script type="text/javascript">
+
+         $.ajaxSetup({
+             headers: {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+         });
+           // Variable to hold request
+      var request;
+
+      // Bind to the submit event of our form
+      $("#review").submit(function(event){
+
+          // Prevent default posting of form - put here to work in case of errors
+          event.preventDefault();
+
+          // Abort any pending request
+          if (request) {
+              request.abort();
+          }
+          // setup some local variables
+          var $form = $(this);
+
+          // Let's select and cache all the fields
+          var $inputs = $form.find("input, select, button, textarea");
+
+          // Serialize the data in the form
+          var serializedData = $form.serialize();
+
+          // Let's disable the inputs for the duration of the Ajax request.
+          // Note: we disable elements AFTER the form data has been serialized.
+          // Disabled form elements will not be serialized.
+          $inputs.prop("disabled", true);
+
+          // Fire off the request to /form.php
+          request = $.ajax({
+              url: "{{route('products.ratings.store',['product' => $product->id])}}",
+              type: "post",
+              data: serializedData
+          });
+
+          // Callback handler that will be called on success
+          request.done(function (response, textStatus, jqXHR){
+              // Log a message to the console
+
+              $("#review")[0].reset();
+               $("#review-tab").prepend(response.review);
+
+          });
+
+          // Callback handler that will be called on failure
+          request.fail(function (jqXHR, textStatus, errorThrown){
+              // Log the error to the console
+              console.error(
+                  "The following error occurred: "+
+                  textStatus, errorThrown
+              );
+          });
+
+          // Callback handler that will be called regardless
+          // if the request failed or succeeded
+          request.always(function () {
+              // Reenable the inputs
+              $inputs.prop("disabled", false);
+          });
+
+      });
+   </script>
+@endsection
 </x-front-layout>
 
 

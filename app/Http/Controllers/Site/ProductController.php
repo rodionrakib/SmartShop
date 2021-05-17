@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function show($slug)
     {
-    	$product = Product::where('slug', $slug)->first();
+    	$product = Product::with('ratings')->where('slug', $slug)->first();
 
     	$attributes = Attribute::all();
 

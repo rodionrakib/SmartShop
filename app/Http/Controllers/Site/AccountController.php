@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Hash;
 
 
 class AccountController extends Controller
@@ -59,8 +60,14 @@ class AccountController extends Controller
     public function update(Request $request)
     {
 
+
+
         $data = $request->only(['name','email','phone_number','address']);
 
+        if($request->has('password') && $request->password != null)
+        {
+            $data['password'] = Hash::make(trim($request->password));
+        }
         auth()->user()->update($data);
 
         return redirect()->back();

@@ -125,10 +125,10 @@
                      <i class="bx bxs-star text-primary"></i>
                      <i class="bx bxs-star text-primary"></i>
                   </div>
-                  <p class="font-hk text-sm text-secondary ml-2">(45)</p>
+                  <p class="font-hk text-sm text-secondary ml-2">({{$product->ratings()->count()}})</p>
                </div>
             </div>
-            <span class="font-hk font-bold text-primary text-xl">৳ {{$product->special_price}}</span>
+            <span class="font-hk font-bold text-primary text-xl">৳{{$product->special_price}}</span>
          </div>
       </div>
       @endforeach
