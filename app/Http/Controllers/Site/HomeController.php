@@ -33,4 +33,15 @@ class HomeController extends Controller
 
     	return view('site.home',compact( 'sliders','newArrivalCategory', 'featuredCategories','featuredProducts','onsaleTodayProducts'));
     }
+
+
+    // public function contact()
+    // {
+    //     return view('site.pages.contact');
+    // }
+
+    // public function faq()
+    // {
+    //     return view('site.pages.faq');
+    // }
 }

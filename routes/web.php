@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\ContactController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,7 @@ use App\Http\Controllers\Site\CheckoutController;
 use App\Http\Controllers\Site\WishlistController;
 use App\Http\Controllers\Site\AccountController;
 use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\Site\PageController;
 
 
 /*
@@ -44,6 +46,11 @@ use App\Http\Controllers\Site\HomeController;
 // });
 
 Route::get('/',[HomeController::class,'show'])->name('home');
+Route::get('/contact',[PageController::class,'contact'])->name('contact');
+Route::get('/contact-success',[PageController::class,'contactSuccess'])->name('contact.success');
+Route::post('/contact',[PageController::class,'contactStore'])->name('contact');
+
+Route::get('/faq',[PageController::class,'faq'])->name('faq');
 
 
 Route::post('/cart',[CartController::class,'store'])->name('cart.store');
@@ -121,7 +128,8 @@ Route::prefix('admin')->name('admin.')->middleware(['employee'])->group(function
 	Route::post('products/attributes/delete', [ProductAttributeController::class,'deleteAttribute']);
 
 
-
+	Route::get('contacts', [ContactController::class , 'index' ])->name('contacts.index');
+	Route::get('contacts/{contact}', [ContactController::class , 'show' ])->name('contacts.show');
 
 
 

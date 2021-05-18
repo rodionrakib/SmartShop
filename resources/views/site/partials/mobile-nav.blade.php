@@ -11,7 +11,7 @@
       <div class="flex items-center justify-between"
          @click="isParentAccordionOpen = !isParentAccordionOpen">
          <span class="font-hk font-medium block transition-colors"
-            :class="isParentAccordionOpen ? 'text-primary' : 'text-secondary'">Products</span>
+            :class="isParentAccordionOpen ? 'text-primary' : 'text-secondary'">Shop</span>
          <i class="bx text-secondary text-xl"
             :class="isParentAccordionOpen ? 'bx-chevron-down' : 'bx-chevron-left'"></i>
       </div>
@@ -51,10 +51,10 @@
    <a href="/about.html"
       class="w-full py-3 cursor-pointer font-hk font-medium text-secondary border-b border-grey-dark block">About
    </a>
-   <a href="/contact#faq"
+   <a href="{{route('faq')}}"
       class="w-full py-3 cursor-pointer font-hk font-medium text-secondary border-b border-grey-dark block">FAQ
    </a>
-   <a href="/contact.html"
+   <a href="{{route('contact')}}"
       class="w-full py-3 cursor-pointer font-hk font-medium text-secondary border-b border-grey-dark block">Contact
    </a>
    <div class="my-8">

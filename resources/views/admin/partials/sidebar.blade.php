@@ -79,6 +79,12 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Orders</span></a>
       </li>
+
+        <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.contacts.index') }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Contact Queries</span></a>
+      </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.brands.index') }}">

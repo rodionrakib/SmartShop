@@ -67,7 +67,7 @@
 
    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
 
-      @foreach($category->products as $product)
+      @foreach($products as $product)
       <div class="w-full relative group lg:last:hidden xl:last:block">
 
          <div class="relative rounded flex justify-center items-center">
@@ -133,143 +133,9 @@
       </div>
       @endforeach
       
-      <!-- <div class="w-full relative group lg:last:hidden xl:last:block">
-         <div class="relative rounded flex justify-center items-center">
-            <div class="w-full h-68 bg-center bg-no-repeat bg-cover"
-               style="background-image:url(https://source.unsplash.com/1000x640/?tch-3)">
-            </div>
-            <span
-               class="absolute top-0 right-0 bg-white px-5 py-1 mt-4 mr-4 rounded-full font-hk font-bold  text-v-blue text-sm uppercase tracking-wide">Trend</span>
-            <div class="absolute opacity-0 transition-opacity group-hover:opacity-100 flex justify-center items-center py-28 inset-0 group bg-secondary bg-opacity-85">
-               <a href="/cart"
-                  class="bg-white hover:bg-primary-light rounded-full px-3 py-3 flex items-center transition-all mr-3">
-               <img src="/assets/img/icons/icon-cart.svg "
-                  class="h-6 w-6"
-                  alt="icon cart" />
-               </a>
-               <a href="/product"
-                  class="bg-white hover:bg-primary-light rounded-full px-3 py-3 flex items-center transition-all mr-3">
-               <img src="/assets/img/icons/icon-search.svg"
-                  class="h-6 w-6"
-                  alt="icon search" />
-               </a>
-               <a href="/account/wishlist/"
-                  class="bg-white hover:bg-primary-light  rounded-full px-3 py-3 flex items-center transition-all ">
-               <img src="/assets/img/icons/icon-heart.svg"
-                  class="h-6 w-6"
-                  alt="icon heart" />
-               </a>
-            </div>
-         </div>
-         <div class="flex justify-between items-center pt-6">
-            <div>
-               <h3 class="font-hk text-base text-secondary">Silver One Watch</h3>
-               <div class="flex items-center">
-                  <div class="flex items-center">
-                     <i class="bx bxs-star text-primary"></i>
-                     <i class="bx bxs-star text-primary"></i>
-                     <i class="bx bxs-star text-primary"></i>
-                     <i class="bx bxs-star text-primary"></i>
-                     <i class="bx bxs-star text-primary"></i>
-                  </div>
-                  <p class="font-hk text-sm text-secondary ml-2">(45)</p>
-               </div>
-            </div>
-            <span class="font-hk font-bold text-primary text-xl">$137.0</span>
-         </div>
-      </div>
-      <div class="w-full relative group lg:last:hidden xl:last:block">
-         <div class="relative rounded flex justify-center items-center">
-            <div class="w-full h-68 bg-center bg-no-repeat bg-cover"
-               style="background-image:url(https://source.unsplash.com/1000x640/?tch-4)">
-            </div>
-            <span
-               class="absolute top-0 right-0 bg-white px-5 py-1 mt-4 mr-4 rounded-full font-hk font-bold  text-primary-light text-sm uppercase tracking-wide">25%</span>
-            <div class="absolute opacity-0 transition-opacity group-hover:opacity-100 flex justify-center items-center py-28 inset-0 group bg-secondary bg-opacity-85">
-               <a href="/cart"
-                  class="bg-white hover:bg-primary-light rounded-full px-3 py-3 flex items-center transition-all mr-3">
-               <img src="/assets/img/icons/icon-cart.svg "
-                  class="h-6 w-6"
-                  alt="icon cart" />
-               </a>
-               <a href="/product"
-                  class="bg-white hover:bg-primary-light rounded-full px-3 py-3 flex items-center transition-all mr-3">
-               <img src="/assets/img/icons/icon-search.svg"
-                  class="h-6 w-6"
-                  alt="icon search" />
-               </a>
-               <a href="/account/wishlist/"
-                  class="bg-white hover:bg-primary-light  rounded-full px-3 py-3 flex items-center transition-all ">
-               <img src="/assets/img/icons/icon-heart.svg"
-                  class="h-6 w-6"
-                  alt="icon heart" />
-               </a>
-            </div>
-         </div>
-         <div class="flex justify-between items-center pt-6">
-            <div>
-               <h3 class="font-hk text-base text-secondary">Princess</h3>
-               <div class="flex items-center">
-                  <div class="flex items-center">
-                     <i class="bx bxs-star text-primary"></i>
-                     <i class="bx bxs-star text-primary"></i>
-                     <i class="bx bxs-star text-primary"></i>
-                     <i class="bx bxs-star text-primary"></i>
-                     <i class="bx bxs-star text-primary"></i>
-                  </div>
-                  <p class="font-hk text-sm text-secondary ml-2">(45)</p>
-               </div>
-            </div>
-            <span class="font-hk font-bold text-primary text-xl">$145.0</span>
-         </div>
-      </div>
-      <div class="w-full relative group lg:last:hidden xl:last:block">
-         <div class="relative rounded flex justify-center items-center">
-            <div class="w-full h-68 bg-center bg-no-repeat bg-cover"
-               style="background-image:url(https://source.unsplash.com/1000x640/?tch-5)">
-            </div>
-            <span
-               class="absolute top-0 right-0 bg-white px-5 py-1 mt-4 mr-4 rounded-full font-hk font-bold  text-v-red text-sm uppercase tracking-wide">Hot</span>
-            <div class="absolute opacity-0 transition-opacity group-hover:opacity-100 flex justify-center items-center py-28 inset-0 group bg-secondary bg-opacity-85">
-               <a href="/cart"
-                  class="bg-white hover:bg-primary-light rounded-full px-3 py-3 flex items-center transition-all mr-3">
-               <img src="/assets/img/icons/icon-cart.svg "
-                  class="h-6 w-6"
-                  alt="icon cart" />
-               </a>
-               <a href="/product"
-                  class="bg-white hover:bg-primary-light rounded-full px-3 py-3 flex items-center transition-all mr-3">
-               <img src="/assets/img/icons/icon-search.svg"
-                  class="h-6 w-6"
-                  alt="icon search" />
-               </a>
-               <a href="/account/wishlist/"
-                  class="bg-white hover:bg-primary-light  rounded-full px-3 py-3 flex items-center transition-all ">
-               <img src="/assets/img/icons/icon-heart.svg"
-                  class="h-6 w-6"
-                  alt="icon heart" />
-               </a>
-            </div>
-         </div>
-         <div class="flex justify-between items-center pt-6">
-            <div>
-               <h3 class="font-hk text-base text-secondary">Silver One for Men</h3>
-               <div class="flex items-center">
-                  <div class="flex items-center">
-                     <i class="bx bxs-star text-primary"></i>
-                     <i class="bx bxs-star text-primary"></i>
-                     <i class="bx bxs-star text-primary"></i>
-                     <i class="bx bxs-star text-primary"></i>
-                     <i class="bx bxs-star text-primary"></i>
-                  </div>
-                  <p class="font-hk text-sm text-secondary ml-2">(45)</p>
-               </div>
-            </div>
-            <span class="font-hk font-bold text-primary text-xl">$140.0</span>
-         </div>
-      </div> -->
+
    </div>
-   <div class="py-16 flex justify-center mx-auto">
+   <!-- <div class="py-16 flex justify-center mx-auto">
       <span class="font-hk font-semibold text-grey-darkest transition-colors hover:text-black pr-5 cursor-pointer">Previous</span>
       <span
          class="font-hk font-semibold text-black transition-colors hover:text-white text-sm hover:bg-primary h-6 w-6 rounded-full flex items-center justify-center mr-3 cursor-pointer">1</span>
@@ -278,6 +144,9 @@
       <span
          class="font-hk font-semibold text-black transition-colors hover:text-white text-sm hover:bg-primary h-6 w-6 rounded-full flex items-center justify-center mr-3 cursor-pointer">3</span>
       <span class="font-hk font-semibold text-grey-darkest transition-colors hover:text-black pl-2 cursor-pointer">Next</span>
+   </div> -->
+   <div class="py-16 flex justify-center mx-auto">
+   {{ $products->links('vendor.pagination.tailwind') }}
    </div>
 </div>
 </x-front-layout>

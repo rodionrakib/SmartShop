@@ -8,7 +8,7 @@
 
    <li class="mr-10 hidden lg:block group">
       <div class="border-b-2 border-white transition-colors group-hover:border-primary flex items-center">
-         <span class="cursor-pointer text-lg font-hk group-hover:font-bold text-secondary group-hover:text-primary px-2 transition-all">Products</span>
+         <span class="cursor-pointer text-lg font-hk group-hover:font-bold text-secondary group-hover:text-primary px-2 transition-all">Shop</span>
          <i class="bx bx-chevron-down text-secondary group-hover:text-primary pl-2 px-2 transition-colors"></i>
       </div>
       <div
@@ -43,16 +43,13 @@
          </div>
       </div>
    </li>
+   
    <li class="mr-10">
-      <a href="/blog"
-         class="block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">Blog</a>
-   </li>
-   <li class="mr-10">
-      <a href="/contact#faq"
+      <a href="{{route('faq')}}"
          class="block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">FAQ</a>
    </li>
    <li class="mr-10">
-      <a href="/contact"
+      <a href="{{route('contact')}}"
          class="block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">Contact</a>
    </li>
 </ul>
