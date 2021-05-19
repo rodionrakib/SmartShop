@@ -142,4 +142,17 @@ class Product extends Model implements HasMedia,Buyable
 
 
         }
+
+    /**
+     * Get the price of the Buyable item.
+     *
+     * @return float
+     */
+    public function getBuyablePrice($options = null)
+    {
+        if (($price = $this->getAttribute('special_price'))) {
+            return $price;
+        }
+    }
+
 }
