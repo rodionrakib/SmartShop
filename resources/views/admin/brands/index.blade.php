@@ -21,7 +21,11 @@
         <td class="text-center">
             <div class="btn-group" role="group" aria-label="Second group">
                 <a href="{{ route('admin.brands.edit', $brand->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                <a href="{{ route('admin.brands.destroy', $brand->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                 <form method="post" action="{{ route('admin.brands.destroy', $brand->id) }}" >
+                             @csrf
+                             @method('DELETE')   
+                            <button  type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                            </form>
             </div>
         </td>
     </tr>
