@@ -20,12 +20,12 @@ class ProductController extends Controller
 
     	$images = $product->getMedia();
 
-    	$related = Product::whereNotIn('id', [$product->id])
-			->inRandomOrder()
-			->limit(10)
-			->get();
+   //  	$related = Product::whereNotIn('id', [$product->id])
+			// ->inRandomOrder()
+			// ->limit(10)
+			// ->get();
 		// dd($related);
 
-    	return view('site.pages.product',compact('product','attributes','images','breadCrumb','related'));
+    	return view('site.pages.product',compact('product','attributes','images','breadCrumb'));
     }
 }

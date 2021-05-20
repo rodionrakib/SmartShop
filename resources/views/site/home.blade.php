@@ -21,16 +21,7 @@
                     </div>
                     @endforeach
 
-                    <div class="glide__slide">
-                        <div class="bg-left sm:bg-center bg-no-repeat bg-cover"
-                            style="background-image:url(https://source.unsplash.com/1000x640/?de-05)">
-                            <div class="py-48 px-5 sm:px-10 md:px-12 xl:px-24 text-center sm:text-left sm:w-5/6 lg:w-3/4 xl:w-2/3">
-                                <h3 class=" font-butler font-medium text-secondary text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Back to school, <br /> the stylish way</h3>
-                                <a href="/collection-grid"
-                                    class="btn btn-primary btn-lg mt-8">Know more</a>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
             <div class="absolute bottom-0 inset-x-0 mb-6 z-30 text-center"

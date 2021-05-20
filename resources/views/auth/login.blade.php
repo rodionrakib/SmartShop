@@ -2,7 +2,7 @@
 <div class="container">
    <div class="flex relative">
       <div class="bg-no-repeat bg-cover bg-center w-3/4 ml-auto h-56 lg:h-68"
-         style="background-image:url(https://source.unsplash.com/1000x640/?ge-07)"
+         style="background-image:url({{asset('assets/img/about-hero.png')}})"
          >
       </div>
       <div class="w-full h-56 lg:h-68 bg-no-repeat bg-cover absolute top-0 left-0 c-hero-gradient-bg">
