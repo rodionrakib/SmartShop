@@ -51,13 +51,16 @@
                         <div class="w-20 mx-0 relative pr-0">
                            <div class="h-20 rounded flex items-center justify-center">
                               <div class="aspect-w-1 aspect-h-1 w-full">
-                                 <img src="{{$item->model->getMedia()->first()->getFullUrl()}}"
+                                  
+                                  <img src="{{$item->model->getMedia()->first()->getFullUrl()}}"
                                     alt="product image"
                                     class="object-cover" />
+                                  
                               </div>
                            </div>
                         </div>
-                        <span class="font-hk text-secondary text-base mt-2 ml-4">{{$item->name}}</span>
+                        <a href="{{$item->model->path()}}">
+                        <span class="font-hk text-secondary text-base mt-2 ml-4">{{$item->name}}</span></a>
                         
                         @if($item->model->attributes()->count() > 0)
 
@@ -167,7 +170,7 @@
                   <p class="font-hkbold text-secondary pt-1 pb-2">Cart Total</p>
                   <div class="border-b border-grey-darker pb-1 flex justify-between">
                      <span class="font-hk text-secondary">Subtotal</span>
-                     <span class="font-hk text-secondary">${{$subtotal}}</span>
+                     <span class="font-hk text-secondary">৳{{$subtotal}}</span>
                   </div>
                  <!--  <div class="border-b border-grey-darker pt-2 pb-1 flex justify-between">
                      <span class="font-hk text-secondary">Coupon applied</span>
@@ -175,7 +178,7 @@
                   </div> -->
                   <div class="pt-3 flex justify-between">
                      <span class="font-hkbold text-secondary">Total</span> 
-                     <span class="font-hkbold text-secondary">${{$total}}</span>
+                     <span class="font-hkbold text-secondary">৳{{$total}}</span>
                   </div>
                </div>
                <a href="{{route('checkout.show')}}"

@@ -53,7 +53,7 @@ fieldset, label { margin: 0; padding: 0; }
       <div class="w-full h-56 lg:h-68 bg-no-repeat bg-cover absolute top-0 left-0 c-hero-gradient-bg">
         <div class="py-20 px-6 sm:px-12 lg:px-20">
             <h1 class=" font-butler text-white text-2xl sm:text-3xl md:text-4.5xl lg:text-5xl">
-                {{$product->name}}/h1>
+                {{$product->name}}</h1>
             <div class="flex pt-2">
                 <a href="/"
                    class="font-hk text-white text-base hover:text-primary transition-colors">Home</a>
@@ -180,7 +180,7 @@ fieldset, label { margin: 0; padding: 0; }
                <button name="action" type="submit"  value="add_to_cart" 
                   class="btn btn-outline mr-4 md:mr-6">Add to cart</button>
                <button name="action" type="submit" value="buy_now" 
-                  class="btn btn-primary">BUY NOW</button>
+                  class="btn btn-primary">ORDER NOW</button>
             </div>
             <div class="flex pb-2">
                <p class="font-hk text-secondary">SKU:</p>

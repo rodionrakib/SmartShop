@@ -8,21 +8,21 @@
          name="viewport" />
       <title>{{$title ?? 'Smart Student Shop'}}</title>
       <meta property="og:title"
-         content="Login | Elyssi Template" />
+         content="Smart Student Shop" />
       <meta property="og:locale"
          content="en_US" />
       <meta name="theme-color"
          content="#f35627" />
       <link rel="canonical"
-         href="https://elyssi.tailwindmade.com/pages/login" />
+         href="https://smartstudentshop.com" />
       <meta property="og:url"
-         content="https://elyssi.tailwindmade.com/pages/login" />
+         content="https://smartstudentshop.com" />
       <meta name="description"
-         content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+         content="We will make your life more stylish and comfortable" />
       <meta property="og:site_name"
-         content="Elyssi Template" />
+         content="Smart Student Shop" />
       <meta property="og:image"
-         content="https://elyssi.tailwindmade.com/assets/img/social.jpg" />
+         content="https://smartstudentshop/assets/img/ban.png" />
       <link rel="icon"
          type="image/png"
          href="/assets/img/favicon.png" />
@@ -99,7 +99,7 @@
                      </a>
                   </div>
                   <a href="/">
-                  <img src="/assets/img/logo.svg"
+                  <img src="/assets/img/smart_student_shop_logo.png"
                      class="w-28 sm:w-48 h-auto"
                      alt="logo" />
                   </a>

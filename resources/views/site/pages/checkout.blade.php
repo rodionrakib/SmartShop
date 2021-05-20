@@ -132,7 +132,7 @@
                 <h4 class="font-hkbold text-secondary pt-1 pb-2">Cart Totals</h4>
                 <div class="border-b border-grey-darker py-3 flex justify-between">
                     <span class="font-hk text-secondary leading-none">Subtotal</span>
-                    <span class="font-hk text-secondary leading-none">${{Cart::subtotal()}}</span>
+                    <span class="font-hk text-secondary leading-none">৳{{Cart::subtotal()}}</span>
                 </div>
                 <!-- <div class="border-b border-grey-darker py-3 flex justify-between">
                     <span class="font-hk text-secondary leading-none">Coupon apply</span>
@@ -140,7 +140,7 @@
                 </div> -->
                 <div class="flex justify-between py-3">
                     <span class="font-hkbold text-secondary leading-none">Total</span>
-                    <span class="font-hkbold text-secondary leading-none">${{ Cart::total() }}</span>
+                    <span class="font-hkbold text-secondary leading-none">৳{{ Cart::total() }}</span>
                 </div>
             </div>
         </div>
