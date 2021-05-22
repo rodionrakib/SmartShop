@@ -7,7 +7,7 @@
                     class=" object-cover" />
             </div>
             <span
-                class="text-v-green absolute top-0 right-0 bg-white px-5 py-1 my-4 mx-4 rounded-full font-hk font-bold  text-sm uppercase tracking-wide">New</span>
+                class="text-v-green absolute top-0 right-0 bg-white px-5 py-1 my-4 mx-4 rounded-full font-hk font-bold  text-sm uppercase tracking-wide">{{$product->tag ? $product->tag->name : 'Treandy' }}</span>
             <div
                 class="absolute inset-0 opacity-0 group-hover:opacity-100 flex justify-center items-center bg-secondary bg-opacity-85 transition-opacity">
                 <form method="POST" action="{{route('cart.store')}}">
@@ -49,10 +49,10 @@
                         <i class="bx bxs-star text-primary"></i>
                         <i class="bx bxs-star text-primary"></i>
                     </div>
-                    <p class="font-hk text-sm text-secondary ml-2">45</p>
+                    <p class="font-hk text-sm text-secondary ml-2">{{$product->ratings()->count()}}</p>
                 </div>
             </div>
-            <span class="font-hkbold text-primary text-xl">${{$product->special_price}}</span>
+            <span class="font-hkbold text-primary text-xl">৳{{$product->special_price}}</span>
         </div>
     </div>
 </div>

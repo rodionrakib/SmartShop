@@ -48,9 +48,9 @@
         
       </div>
    </div>
-   <a href="/about.html"
+ <!--   <a href="/about.html"
       class="w-full py-3 cursor-pointer font-hk font-medium text-secondary border-b border-grey-dark block">About
-   </a>
+   </a> -->
    <a href="{{route('faq')}}"
       class="w-full py-3 cursor-pointer font-hk font-medium text-secondary border-b border-grey-dark block">FAQ
    </a>

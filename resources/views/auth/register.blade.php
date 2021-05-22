@@ -61,7 +61,7 @@
                      <button type="submit"
                         class="btn btn-primary w-full mb-4"
                         aria-label="Create account button">Create Account</button>
-                     <a href="/"
+                     <a href="{{route('login')}}"
                         class="flex items-center justify-center mt-2">
                      <i class="bx bx-chevron-left text-secondary leading-none text-2xl -mb-1"></i>
                      <span class="font-hk text-secondary ml-1 leading-none">Login instead</span>

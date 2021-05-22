@@ -8,7 +8,7 @@
             </div>
             <div class="absolute top-0 right-0 bg-white px-5 py-1 m-4 rounded-full">
                 <p class="text-v-green font-hk font-bold text-sm uppercase tracking-wide">
-                    New
+                    {{$product->tag ? $product->tag->name : 'Treandy' }}
                 </p>
             </div>
             <div class="absolute inset-0 opacity-0 group-hover:opacity-100 flex justify-center items-center bg-secondary bg-opacity-85 transition-opacity">
@@ -55,7 +55,7 @@
                     <span class="font-hk text-sm text-secondary ml-2">{{$product->ratings()->count()}}</span>
                 </div>
             </div>
-            <span class="font-hkbold text-primary text-xl">${{$product->special_price}}</span>
+            <span class="font-hkbold text-primary text-xl">৳{{$product->special_price}}</span>
         </a>
     </div>
 </div>
