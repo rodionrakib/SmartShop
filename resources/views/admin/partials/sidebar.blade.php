@@ -69,9 +69,9 @@
 
       <!-- Admin Users -->
       <li class="nav-item">
-        <a class="nav-link" href="{{route('admin.users.index')}}">
+        <a class="nav-link" href="{{route('admin.customers.index')}}">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>Employees</span></a>
+          <span>Customers</span></a>
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">

@@ -244,7 +244,7 @@ fieldset, label { margin: 0; padding: 0; }
                </div>
                <p class="font-hk text-secondary pt-4 lg:w-5/6 xl:w-2/3">{{$review->message}}</p>
                <div class="flex justify-center sm:justify-start items-center pt-3">
-                  <p class="font-hk text-grey-darkest text-sm"><span>By</span>{{$review->name}}</p>
+                  <p class="font-hk text-grey-darkest text-sm"><span>By</span> {{$review->name}}</p>
                   <span class="font-hk text-grey-darkest text-sm block px-4">.</span>
                   <p class="font-hk text-grey-darkest text-sm">{{$review->created_at->diffForHumans()}}</p>
                </div>

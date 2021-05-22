@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\CustomerController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -137,7 +138,7 @@ Route::prefix('admin')->name('admin.')->middleware(['employee'])->group(function
 	Route::resource('posts',PostController::class);
 	Route::resource('products',ProductController::class);
 	Route::resource('categories',CategoryController::class);
-	Route::resource('users',PostController::class);
+	Route::resource('customers',CustomerController::class);
 	Route::resource('attributes',AttributeController::class);
 	Route::resource('brands',BrandController::class);
 	Route::resource('orders',OrderController::class);
