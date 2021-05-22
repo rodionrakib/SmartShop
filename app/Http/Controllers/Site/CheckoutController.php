@@ -26,6 +26,12 @@ class CheckoutController extends Controller
     {
 
 
+    
+
+    	
+
+    	
+
     	$request->validate([
     		'phone_number' => 'required',
     		'address' => 'required',
@@ -60,7 +66,8 @@ class CheckoutController extends Controller
 	            $orderItem = new OrderItem([
 	                'product_id'    =>  $product->id,
 	                'quantity'      =>  $item->qty,
-	                'price'         =>  $item->price
+	                'price'         =>  $item->price,
+	                'attribute' => $item->options->toJson()
 	            ]);
 
 	            $order->items()->save($orderItem);

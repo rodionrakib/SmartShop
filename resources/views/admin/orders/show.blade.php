@@ -21,6 +21,7 @@
                     <div class="col-4">Placed By
                         <address><strong>{{ $order->full_name }}</strong><br>Email: {{ $order->email }}</address>
                         <address><strong>Note</strong><br> {{ $order->notes }}</address>
+
                     </div>
                     <div class="col-4">Ship To
                         <address><strong>{{ $order->first_name }} {{ $order->last_name }}</strong><br>{{ $order->address }}<br>{{ $order->city }}, {{ $order->country }} {{ $order->post_code }}<br>{{ $order->phone_number }}<br></address>
@@ -61,6 +62,7 @@
                                 <th>Product</th>
                                 <th>SKU #</th>
                                 <th>Qty</th>
+                                <th>Attribute</th>
                                 <th>Subtotal</th>
                             </tr>
                             </thead>
@@ -70,6 +72,7 @@
                                             <td>{{ $item->product->name }}</td>
                                         <td>{{ $item->product->sku }}</td>
                                         <td>{{ $item->quantity }}</td>
+                                        <td>{{ $item->attribute }}</td>
                                         <td>{{ config('settings.currency_symbol') }}{{ round($item->price * $item->quantity, 2) }}</td>
                                     </tr>
                                 @endforeach
