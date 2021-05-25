@@ -22,7 +22,7 @@
                   alt="icon cart" />
                </button>
                </form>
-                <a href="{{route('product.show',['slug' => $product->slug])}}"
+                <a href="{{$product->path()}}"
                     class="bg-white hover:bg-primary-light rounded-full p-3 flex items-center transition-all mr-3">
                 <img src="/assets/img/icons/icon-search.svg"
                     class="h-6 w-6"

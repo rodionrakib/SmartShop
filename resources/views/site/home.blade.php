@@ -36,7 +36,7 @@
         </div>
        
 
-    
+        
        
         <div class="flex flex-col md:flex-row py-20 md:py-24">
             <div
