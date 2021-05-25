@@ -40,7 +40,7 @@
                 </form>
             </div>
         </div>
-        <a href="/product"
+        <a href="{{$product->path()}}"
             class="flex justify-between items-center pt-6">
             <div>
                 <h3 class="font-hk text-base text-secondary">{{$product->name}}</h3>

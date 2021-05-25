@@ -21,7 +21,6 @@
                     </div>
                     @endforeach
 
-                   
                 </div>
             </div>
             <div class="absolute bottom-0 inset-x-0 mb-6 z-30 text-center"
@@ -37,7 +36,7 @@
         </div>
        
 
-        <
+    
        
         <div class="flex flex-col md:flex-row py-20 md:py-24">
             <div
