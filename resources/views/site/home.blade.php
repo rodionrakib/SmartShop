@@ -292,7 +292,7 @@
             </div>
         </div>
     </div>
-
+    @section('js')
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/glide.min.js"
             integrity="sha256-CnNQJd80jPuIDyeQRRq7+Wgt+++Kl0dZLt4ETNmxMIw="
             crossorigin="anonymous"
@@ -307,8 +307,10 @@
           href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/css/glide.theme.min.css"
           integrity="sha256-sw/JiPOV1ZfcXjqBJT1vqaA4vBGeiqn+b7PDhVv4OA4="
           crossorigin="anonymous" />
+    @endsection
+   
     
 
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.min.js"
-            defer></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.min.js"
+            defer></script> -->
 </x-front-layout>

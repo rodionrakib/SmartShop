@@ -25,7 +25,7 @@ function productSlider() {
         .querySelectorAll(".product-slider")
         .forEach(slider => {
             new Glide(slider, {
-                    type: "carousel",
+                    // type: "slider",
                     startAt: 1,
                     perView: 4,
                     gap: 0,
