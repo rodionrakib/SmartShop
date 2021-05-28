@@ -12,49 +12,14 @@ function collectionSliders() {
                             perView: 2,
                         },
                         1024: {
-                            perView: 1,
-                        },
-                    },
-                })
-                .mount();
-        });
-}
-
-function productSlider() {
-    document
-        .querySelectorAll(".product-slider")
-        .forEach(slider => {
-            new Glide(slider, {
-                    // type: "slider",
-                    startAt: 1,
-                    perView: 4,
-                    gap: 0,
-                    peek: {
-                        before: 50,
-                        after: 50,
-                    },
-                    breakpoints: {
-                        1024: {
-                            perView: 3,
-                            peek: {
-                                before: 20,
-                                after: 20,
-                            },
+                            perView: 2,
                         },
                         768: {
                             perView: 2,
-                            peek: {
-                                before: 10,
-                                after: 10,
-                            },
                         },
                         600: {
                             perView: 1,
-                            peek: {
-                                before: 0,
-                                after: 0,
-                            },
-                        },
+                        }
                     },
                 })
                 .mount();

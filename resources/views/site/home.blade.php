@@ -109,32 +109,67 @@
                 </a>
             </div>
             <div class="product-slider relative"
-                x-data
-                x-init="productSlider">
-                <div class="glide__track"
-                    data-glide-el="track">
-                    <div class="pt-12 relative glide__slides">
-                        @foreach($featuredProducts as $product)
-                        @include('site.partials.product-thumb')
-                        @endforeach
-                        
-                    </div>
-                </div>
-                <div data-glide-el="controls">
-                    <div class="transition-all shadow-md rounded-full absolute left-25 sm:left-35 md:left-0 top-0 md:top-50 transform -translate-y-1/2 bg-grey hover:bg-primary border border-grey-dark z-30 cursor-pointer group"
-                        data-glide-dir="<">
-                        <div class="h-12 w-12 flex items-center justify-center">
-                            <i class="bx bx-chevron-left text-primary transition-colors group-hover:text-white text-3xl leading-none"></i>
+                     x-data
+                     x-init="
+                     new Glide($el, {
+                     type: 'carousel',
+                     startAt: 1,
+                     perView: 4,
+                     gap: 0,
+                     peek: {
+                     before: 50,
+                     after: 50,
+                     },
+                     breakpoints: {
+                     1024: {
+                     perView: 3,
+                     peek: {
+                     before: 20,
+                     after: 20,
+                     },
+                     },
+                     768: {
+                     perView: 2,
+                     peek: {
+                     before: 10,
+                     after: 10,
+                     },
+                     },
+                     600: {
+                     perView: 1,
+                     peek: {
+                     before: 0,
+                     after: 0,
+                     },
+                     },
+                     },
+                     })
+                     .mount();
+                     ">
+                     <div class="glide__track"
+                        data-glide-el="track">
+                        <div class="pt-12 relative glide__slides">
+                           @foreach($featuredProducts as $product)
+                            @include('site.partials.product-thumb')
+                            @endforeach
+                   
                         </div>
-                    </div>
-                    <div class="transition-all shadow-md rounded-full absolute right-25 sm:right-35 md:right-0 top-0 md:top-50 transform -translate-y-1/2 bg-grey hover:bg-primary border border-grey-dark z-30 cursor-pointer group"
-                        data-glide-dir=">">
-                        <div class="h-12 w-12 flex items-center justify-center">
-                            <i class="bx bx-chevron-right text-primary transition-colors group-hover:text-white text-3xl leading-none"></i>
+                     </div>
+                     <div data-glide-el="controls">
+                        <div class="transition-all shadow-md rounded-full absolute left-25 sm:left-35 md:left-0 top-0 md:top-50 transform -translate-y-1/2 bg-grey hover:bg-primary border border-grey-dark z-30 cursor-pointer group"
+                           data-glide-dir="<">
+                           <div class="h-12 w-12 flex items-center justify-center">
+                              <i class="bx bx-chevron-left text-primary transition-colors group-hover:text-white text-3xl leading-none"></i>
+                           </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                        <div class="transition-all shadow-md rounded-full absolute right-25 sm:right-35 md:right-0 top-0 md:top-50 transform -translate-y-1/2 bg-grey hover:bg-primary border border-grey-dark z-30 cursor-pointer group"
+                           data-glide-dir=">">
+                           <div class="h-12 w-12 flex items-center justify-center">
+                              <i class="bx bx-chevron-right text-primary transition-colors group-hover:text-white text-3xl leading-none"></i>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
         </div>
     </div>
     <div class="w-full relative">
@@ -242,7 +277,43 @@
             </div>
             <div class="product-slider relative"
                 x-data
-                x-init="productSlider">
+                x-init="
+                new Glide($el, {
+                     type: 'carousel',
+                     startAt: 1,
+                     perView: 4,
+                     gap: 0,
+                     peek: {
+                     before: 50,
+                     after: 50,
+                     },
+                     breakpoints: {
+                     1024: {
+                     perView: 3,
+                     peek: {
+                     before: 20,
+                     after: 20,
+                     },
+                     },
+                     768: {
+                     perView: 2,
+                     peek: {
+                     before: 10,
+                     after: 10,
+                     },
+                     },
+                     600: {
+                     perView: 1,
+                     peek: {
+                     before: 0,
+                     after: 0,
+                     },
+                     },
+                     },
+                     })
+                     .mount();
+                "
+                >
                 <div class="glide__track"
                     data-glide-el="track">
                     <div class="pt-12 relative glide__slides">
@@ -293,24 +364,29 @@
         </div>
     </div>
     @section('js')
-    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/glide.min.js"
-            integrity="sha256-CnNQJd80jPuIDyeQRRq7+Wgt+++Kl0dZLt4ETNmxMIw="
-            crossorigin="anonymous"
-            defer></script>
-
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/css/glide.core.min.css"
-          integrity="sha256-Ev8y2mML/gGa4LFVZgNpMTjKwj34q4pC4DcseWeRb9w="
-          crossorigin="anonymous" />
-
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/css/glide.theme.min.css"
-          integrity="sha256-sw/JiPOV1ZfcXjqBJT1vqaA4vBGeiqn+b7PDhVv4OA4="
-          crossorigin="anonymous" />
-    @endsection
-   
     
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.min.js"
-            defer></script> -->
+    
+
+     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/glide.min.js"
+                integrity="sha256-CnNQJd80jPuIDyeQRRq7+Wgt+++Kl0dZLt4ETNmxMIw="
+                crossorigin="anonymous"
+                defer></script>
+
+        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/css/glide.core.min.css"
+              integrity="sha256-Ev8y2mML/gGa4LFVZgNpMTjKwj34q4pC4DcseWeRb9w="
+              crossorigin="anonymous"/>
+
+        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/css/glide.theme.min.css"
+              integrity="sha256-sw/JiPOV1ZfcXjqBJT1vqaA4vBGeiqn+b7PDhVv4OA4="
+              crossorigin="anonymous"/>
+        
+
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.min.js"
+                defer></script>
+
+        <script src="{{asset('assets/js/main.js')}}"></script>
+             @endsection
 </x-front-layout>

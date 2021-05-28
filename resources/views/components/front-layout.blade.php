@@ -277,10 +277,10 @@
             </p>
          </div>
       </div>
-      @yield('js')
-      <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.min.js"
-         defer></script>
-      <script src="{{asset('/assets/js/main.js')}}"></script>
+      
+   
+       @yield('js')
+
       
    </body>
 </html>

@@ -16,7 +16,7 @@ class HomeController extends Controller
         $sliders = Slider::where('status',1)->get();
 
 
-    	$featuredProducts = Product::where('featured',true)->latest()->take(10)->get();
+    	$featuredProducts = Product::where('featured',true)->latest()->take(7)->get();
 
     	$newArrivalCategory  = Category::whereSlug('new-arrivals')->get()->first();
 
