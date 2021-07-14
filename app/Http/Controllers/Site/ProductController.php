@@ -10,9 +10,9 @@ use App\Models\Attribute;
 
 class ProductController extends Controller
 {
-    public function show($slug)
+    public function show(Product $product)
     {
-    	$product = Product::with('ratings')->where('slug', $slug)->first();
+    	
 
     	$attributes = Attribute::all();
 
@@ -20,12 +20,12 @@ class ProductController extends Controller
 
     	$images = $product->getMedia();
 
-   //  	$related = Product::whereNotIn('id', [$product->id])
-			// ->inRandomOrder()
-			// ->limit(10)
-			// ->get();
+    	$related = Product::whereNotIn('id', [$product->id])
+			->inRandomOrder()
+			->limit(6)
+			->get();
 		// dd($related);
 
-    	return view('site.pages.product',compact('product','attributes','images','breadCrumb'));
+    	return view('site.pages.product',compact('product','attributes','images','breadCrumb','related'));
     }
 }

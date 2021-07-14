@@ -6,18 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\AttributeValue;
 use Illuminate\Http\Request;
 use App\Models\Attribute;
+use Attribute as GlobalAttribute;
 
 class AttributeValueController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     public function getValues(Request $request)
     {
@@ -54,14 +46,31 @@ class AttributeValueController extends Controller
         return response()->json($attributeValue);
     }
 
-    public function deleteValues(Request $request)
+    // public function deleteValues(Request $request)
+    // {
+    //     $attributeValue = AttributeValue::findOrFail($request->get('id'));
+    //     $attributeValue->delete();
+    //     return response()->json(['status' => 'success', 'message' => 'Attribute value deleted successfully.']);
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function index(Request $request,Attribute $attribute)
     {
-        $attributeValue = AttributeValue::findOrFail($request->get('id'));
-        $attributeValue->delete();
-        return response()->json(['status' => 'success', 'message' => 'Attribute value deleted successfully.']);
+        
+        return response()->json($attribute->values);
+
     }
-
-
 
 
     /**
@@ -89,7 +98,7 @@ class AttributeValueController extends Controller
             'price' => $request->has('price') ? $request->price: 0  
         ]);
 
-        return redirect()->route('admin.attributes.show',['attribute' => $attribute->id])->with('message', 'Attribute value created');
+        return response()->json([],201);;
         
     }
 
@@ -133,8 +142,10 @@ class AttributeValueController extends Controller
      * @param  \App\Models\AttributeValue  $attributeValue
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AttributeValue $attributeValue)
+    public function destroy(Attribute $attribute,AttributeValue $value)
     {
-        //
+        $value->delete();
+        return response()->json(['status' => 'success', 'message' => 'Attribute value deleted successfully.']);
+
     }
 }

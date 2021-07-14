@@ -34,7 +34,7 @@ class Product extends Model implements HasMedia,Buyable
 
     protected $guarded = [];
 
-
+    protected $with = ['media','tag'];
     /**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
@@ -70,7 +70,7 @@ class Product extends Model implements HasMedia,Buyable
         $this->categories->each(function($cat) use (&$html){
             if($cat->menu)
             {
-                $html .= "<a href=\"{$cat->path()}\" class=\"font-hk text-white text-base hover:text-primary transition-colors\" >{$cat->name}</a>";
+                $html .= "<a href=\"{$cat->nestedPath()}\" class=\"font-hk text-white text-base hover:text-primary transition-colors\" >{$cat->name}</a>";
                 $html .= "<span class='font-hk text-white text-base px-2'>.</span>";
     
             }
@@ -105,7 +105,7 @@ class Product extends Model implements HasMedia,Buyable
 
     public function path()
     {
-        return '/product/'.$this->slug;
+        return '/products/'.$this->slug;
     }
 
     public function starsAvg()

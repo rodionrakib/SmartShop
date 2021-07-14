@@ -8,7 +8,7 @@
             <div class="glide__track"
                 data-glide-el="track">
                 <div class="glide__slides">
-                    @foreach($sliders as $slider)
+                    @forelse($sliders as $slider)
                     <div class="glide__slide">
                         <div class="bg-left sm:bg-center bg-no-repeat bg-cover"
                             style="background-image:url({{$slider->coverImagePath()}})">
@@ -19,7 +19,20 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
+
+                    @empty  
+                    <div class="glide__slide">
+                        <div class="bg-left sm:bg-center bg-no-repeat bg-cover"
+                            style="background-image:url('assets/img/bg-cta.png')">
+                            <div class="py-48 px-5 sm:px-10 md:px-12 xl:px-24 text-center sm:text-left sm:w-5/6 lg:w-3/4 xl:w-2/3">
+                                <h3 class=" font-butler font-medium text-secondary text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Title</h3>
+                                <a href=""
+                                    class="btn btn-primary btn-lg mt-8">Know more</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    @endforelse
 
                 </div>
             </div>
@@ -174,87 +187,81 @@
     </div>
     <div class="w-full relative">
         <div class="absolute inset-y-0 right-0 w-13/14 bg-center bg-no-repeat bg-cover"
-            style="background-image:url(/assets/img/bg-products.png)"></div>
-        <div class="w-2/3 md:max-w-screen-sm lg:w-5/6 lg:max-w-full xl:w-5/6  2xl:max-w-screen-xxl mx-auto lg:ml-auto lg:mr-10 xl:mr-16  2xl:mx-auto relative z-10">
-            @foreach($featuredCategories as $fc)
-                @if($loop->odd)
-                <div class="py-16 flex">
-                    <div class="hidden lg:inline-block w-3/5 2xl:w-3/4 bg-white py-12 px-4 relative">
-                        <div class="collection-slider">
-                            <div class="glide__track"
-                                data-glide-el="track">
-                                <div class="glide__slides">
-                                    @foreach($fc->products as $product)
-                                    @include('site.partials.product-slider')
-                                    @endforeach
-                                    
-                                   
-                                </div>
-                            </div>
+             style="background-image:url(/assets/img/bg-products.png)"></div>
+        <div class="md:max-w-screen-sm w-5/6 lg:max-w-full xl:w-5/6 2xl:max-w-screen-xxl mx-auto lg:ml-auto lg:mr-10 xl:mr-16 2xl:mx-auto relative z-10">
+            @foreach ($featuredCategories as $category)
+            <div class=" {{ $loop->first ? 'py-16' : 'pb-16' }} {{ $loop->odd ? 'flex-col-reverse ' : 'flex-col'}} flex  lg:flex-row items-center">
+                @if($loop->even)
+                <div class="w-full lg:w-1/3 2xl:w-1/4 lg:pr-6 xl:pr-8 ml-6 sm:ml-10 lg:ml-0">
+                    <div class="text-center lg:text-right">
+                        <h2 class="font-hkbold text-white text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl tracking-wide">Stylish Backpacks, Only For You</h2>
+                        <p class="font-hk text-secondary-lighter text-lg pt-1">Featured Collection</p>
+                        <div class="block lg:hidden">
+                            <a href="/"
+                               class="bg-primary hover:bg-primary-light font-hk font-semibold transition-colors text-sm text-white px-5 md:px-8 py-4 md:py-5 rounded uppercase focus:outline-none inline-block tracking-wide mt-4">View All Backpacks
+                             </a>
                         </div>
                     </div>
-                    <div class="w-full lg:w-1/3 2xl:w-1/4 lg:pl-6 xl:pl-8">
-                        <div class="text-right">
-                            <h2 class="font-hkbold text-white text-2xl lg:text-xl xl:text-2xl  2xl:text-3xl tracking-wide">{{$fc->description}}</h2>
-                            <p class="font-hk text-secondary-lighter text-lg pt-1">Featured Collection</p>
+                    <div class="relative group hidden lg:block">
+                        <div class="h-56 xl:h-68 2xl:h-88 ml-auto mb-auto bg-center bg-no-repeat bg-cover mt-8 xl:mt-10 2xl:mt-14"
+                             style="background-image:url({{$category->coverImagePath()}})">
                         </div>
-                        <div class="relative group">
-                            <div class="h-88 sm:h-120 lg:h-80 ml-auto mb-auto bg-center bg-no-repeat bg-cover mt-14"
-                                style="background-image:url({{ $fc->coverImagePath()}})">
-                            </div>
-                            <div
-                                class="absolute inset-0 bg-secondary opacity-0 group-hover:opacity-75 pointer-events-none group-hover:pointer-events-auto   transition-all overflow-hidden">
-                            </div>
-                            <div class="absolute opacity-0 group-hover:opacity-100 flex justify-center items-center inset-0 mx-auto group transition-opacity">
-                                <a href="{{$fc->path()}}"
-                                    class="bg-primary hover:bg-primary-light font-hk font-semibold transition-colors text-sm text-white px-5 md:px-8 py-4 md:py-5 rounded uppercase focus:outline-none inline-block tracking-wide">View
+                        <div
+                             class="absolute inset-0 bg-secondary opacity-0 group-hover:opacity-75 pointer-events-none group-hover:pointer-events-auto  transition-all overflow-hidden">
+                        </div>
+                        <div class="absolute opacity-0 group-hover:opacity-100 flex justify-center items-center inset-0 mx-auto group transition-opacity">
+                            <a href="/"
+                               class="bg-primary hover:bg-primary-light font-hk font-semibold transition-colors text-sm text-white px-5 md:px-8 py-4 md:py-5 rounded uppercase focus:outline-none inline-block tracking-wide">View
                                 All Product</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @else
-                <div class="pb-16">
-                    <div class="ml-auto flex justify-between">
-                        <div class="w-full lg:w-1/3 2xl:w-1/4 lg:pr-6 xl:pr-8">
-                            <div class="text-left">
-                                <h2 class="font-hkbold text-white text-2xl lg:text-xl xl:text-2xl  2xl:text-3xl tracking-wide">{{$fc->description}}</h2>
-                                <p class="font-hk text-secondary-lighter text-lg pt-1">Featured Collection</p>
-                            </div>
-                            <div class="relative group">
-                                <div class="h-88 sm:h-120 lg:h-80 ml-auto mb-auto bg-center bg-no-repeat bg-cover mt-14 relative"
-                                    style="background-image:url({{ $fc->coverImagePath()}})">
-                                </div>
-                                <div
-                                    class="absolute inset-0 bg-secondary opacity-0 group-hover:opacity-75 pointer-events-none group-hover:pointer-events-auto transition-all overflow-hidden">
-                                </div>
-                                <div class="absolute opacity-0 group-hover:opacity-100 flex justify-center items-center inset-0 mx-auto group">
-                                    <a href="/"
-                                        class="bg-primary hover:bg-primary-light font-hk font-semibold transition-colors text-sm text-white px-5 md:px-8 py-4 md:py-5 rounded uppercase focus:outline-none inline-block tracking-wide">View
-                                    All Product</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="hidden lg:block w-3/5 2xl:w-3/4 bg-white">
-                            <div class="py-12 px-4">
-                                <div class="collection-slider">
-                                    <div class="glide__track"
-                                        data-glide-el="track">
-                                        <div class="glide__slides">
-                                            @foreach($fc->products as $product)
-                                            @include('site.partials.product-slider')
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
                 @endif
+                <div class="w-full lg:w-3/5 2xl:w-3/4 bg-white pt-8 pb-6 px-4 relative mt-8 lg:mt-0 ml-6 sm:ml-10 lg:ml-0">
+                    <div class="collection-slider">
+                        <div class="glide__track"
+                             data-glide-el="track">
+                            <div class="glide__slides">
+                                @foreach($category->products as $product)
+                                @include('site.partials.product-slider')
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @if ($loop->odd)
+                <div class="w-full lg:w-1/3 2xl:w-1/4 lg:pl-6 xl:pl-8 ml-6 sm:ml-10 lg:ml-0">
+                    <div class="text-center lg:text-right">
+                        <h2 class="font-hkbold text-white text-2xl lg:text-xl xl:text-2xl  2xl:text-3xl tracking-wide">New season, matching shoes</h2>
+                        <p class="font-hk text-secondary-lighter text-lg pt-1">Featured Collection</p>
+                        <div class="block lg:hidden">
+                            <a href="/"
+                               class="bg-primary hover:bg-primary-light font-hk font-semibold transition-colors text-sm text-white px-5 md:px-8 py-4 md:py-5 rounded uppercase focus:outline-none inline-block tracking-wide mt-4">View All Shoes
+                             </a>
+                        </div>
+                    </div>
+                    <div class="relative group hidden lg:block">
+                        <div class="h-56 xl:h-68 2xl:h-88 ml-auto mb-auto bg-center bg-no-repeat bg-cover mt-8 xl:mt-10 2xl:mt-14"
+                             style="background-image:url({{$category->coverImagePath()}})">
+                        </div>
+                        <div
+                             class="absolute inset-0 bg-secondary opacity-0 group-hover:opacity-75 pointer-events-none group-hover:pointer-events-auto   transition-all overflow-hidden">
+                        </div>
+                        <div class="absolute opacity-0 group-hover:opacity-100 flex justify-center items-center inset-0 mx-auto group transition-opacity">
+                            <a href="{{ $category->path() }}"
+                               class="bg-primary hover:bg-primary-light font-hk font-semibold transition-colors text-sm text-white px-5 md:px-8 py-4 md:py-5 rounded uppercase focus:outline-none inline-block tracking-wide">View
+                                All Product</a>
+                        </div>
+                    </div>
+                </div>
+                @endif
+               
+            </div>
             @endforeach
         </div>
     </div>
+    
+    
     <div class="container">
         <div class="py-5 sm:py-16 mt-10 md:mt-16 mb-12 sm:mb-6 md:mb-12 lg:mb-28 relative w-full">
             <div class="bg-left bg-no-repeat bg-cover lg:w-6/11 xl:w-3/5 h-80 sm:h-100 md:h-108 lg:h-120 z-20 relative"

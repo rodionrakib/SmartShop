@@ -29,7 +29,7 @@ use App\Http\Controllers\Site\WishlistController;
 use App\Http\Controllers\Site\AccountController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\PageController;
-
+use App\Http\Controllers\Site\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,12 +76,12 @@ Route::delete('/wishlists/{product}',[WishlistController::class,'destroy'])->nam
 Route::post('/products/{product}/ratings', [RatingController::class,'store'])->name('products.ratings.store');
 
 
-Route::get('/categories/{slug1}/{slug2?}/{slug3?}', [FrontCategoryController::class,'show'])->name('category.show');
-Route::get('/product/{slug}', [FrontProductController::class,'show'])->name('product.show');
+Route::get('/collections/{slug1}/{slug2?}/{slug3?}', [FrontCategoryController::class,'show'])->name('category.show');
+Route::get('/products/{product:slug}', [FrontProductController::class,'show'])->name('products.show');
 
 Route::post('/products/{product}/ratings', [RatingController::class,'store'])->name('products.ratings.store');
 
-
+Route::get('/search',[SearchController::class,'index'])->name('search.index');
 Route::prefix('account')->middleware('auth')->group(function(){
 
 
@@ -110,10 +110,13 @@ Route::prefix('admin')->name('admin.')->middleware(['employee'])->group(function
 	Route::get('dashboard',[DashboardController::class,'home'])->name('dashboard');
 
 
-	Route::post('attributes/get-values', [AttributeValueController::class,'getValues']);
-	Route::post('attributes/add-values', [AttributeValueController::class,'addValues']);
-	Route::post('attributes/update-values',[AttributeValueController::class,'updateValues']);
-	Route::post('attributes/delete-values', [AttributeValueController::class,'deleteValues']);
+	// Route::post('attributes/get-values', [AttributeValueController::class,'getValues']);
+	// Route::post('attributes/{attribute}/values', [AttributeValueController::class,'store']);
+	// Route::post('attributes/update-values',[AttributeValueController::class,'updateValues']);
+	// Route::post('attributes/delete-values', [AttributeValueController::class,'deleteValues']);
+
+	Route::resource('attributes.values', AttributeValueController::class);
+
 
 
 

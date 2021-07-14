@@ -139,6 +139,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'sku' => $request->sku,
             'description' => $request->description,
+            'short_description' => $request->short_description,
             'quantity' => $request->quantity,
             'weight' => $request->has('weight') ? $request->weight : 0 ,
             'price' => $request->has('price') ? $request->price : 0 ,

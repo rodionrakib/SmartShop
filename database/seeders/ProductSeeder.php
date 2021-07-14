@@ -17,11 +17,27 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-    	$mensFashion = Category::factory()->create(['name' => 'Men\'s Fashion ']);
+    	$mens = Category::factory()->create(['name' => 'Men','featured' => true,'slug' => 'men']);
 
-        $womensFashion = Category::factory()->create(['name' => 'Women\'s Fashion ']);
+        Category::factory()->count(3)->create()->each(function($child) use ($mens){
+            $child->appendToNode($mens)->save();
+        });
 
-        $studentAccesories = Category::factory()->create(['name' => 'Student\'s Accesories']);
+
+        $women = Category::factory()->create(['name' => 'Women','featured' => true,'slug' => 'women']);
+
+
+        Category::factory()->count(4)->create()->each(function($child) use ($women){
+            $child->appendToNode($women)->save();
+        });
+
+        $studentAccesories = Category::factory()->create(['name' => 'Students','slug' => 'students']);
+
+        Category::factory()->count(2)->create()->each(function($child) use ($studentAccesories){
+            $child->appendToNode($studentAccesories)->save();
+        });
+
+        $electronics = Category::factory()->create(['name' => 'Electronics','slug'=> 'electronics']);
 
         $onSaleToday = Category::factory()->create(['name' => 'On Sale Only Today','slug' => 'on-sale-only-today','menu' => false]);
 
@@ -42,7 +58,7 @@ class ProductSeeder extends Seeder
 
 		$products->each(function($product){
 
-			$ids = Category::all()->random(2)->pluck('id')->toArray();
+			$ids = Category::all()->random(4)->pluck('id')->toArray();
 
 			$product->categories()->attach($ids);
 

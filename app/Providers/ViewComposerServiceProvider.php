@@ -27,7 +27,7 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(['site.partials.nav','site.partials.mobile-nav'], function ($view) {
-            $view->with('categories', Category::orderByRaw('-name ASC')->get()->toTree());
+            $view->with('categories', Category::with('children')->orderByRaw('-name ASC')->get()->toTree());
         });
     }
 }

@@ -52,7 +52,7 @@
                         <i class="bx bxs-star text-primary"></i>
                         <i class="bx bxs-star text-primary"></i>
                     </div>
-                    <span class="font-hk text-sm text-secondary ml-2">{{$product->ratings()->count()}}</span>
+                    <span class="font-hk text-sm text-secondary ml-2">{{$product->ratings_count}}</span>
                 </div>
             </div>
             <span class="font-hkbold text-primary text-xl">৳{{$product->special_price}}</span>

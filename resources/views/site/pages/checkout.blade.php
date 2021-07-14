@@ -20,7 +20,7 @@
             @csrf
             <div class="pt-10 md:pt-12">
                 <div class="flex flex-col-reverse sm:flex-row items-center justify-between">
-                    <h1 class="font-hk font-medium text-secondary text-xl md:text-2xl">Contact information</h1>
+                    <h1 class="font-hk font-medium text-secondary text-xl md:text-2xl">Mobile Number</h1>
                     @guest
                     <p class="font-hk text-secondary">
                         Already have an account?
@@ -35,7 +35,7 @@
                         class="form-input"
                         id="phone_number" 
                         name="phone_number" 
-                        value="{{ auth()->check() ? auth()->user()->phone_number : '' }}" 
+                        value="{{ auth()->check() ? auth()->user()->phone_number : old('phone_number') }}" 
                         />
                     @error('phone_number')
                         <div class="text-primary">{{ $message }}</div>
@@ -46,39 +46,52 @@
                 <h4 class="font-hk font-medium text-secondary text-xl md:text-2xl text-center sm:text-left">Shipping address (Inside Bangladesh)</h4>
                 <div class="pt-4 md:pt-5">
                     <div class="flex justify-between">
-                        <input type="text"
-                            placeholder="Full Name"
-                            class="form-input mb-4 sm:mb-5 mr-2"
-                            id="full_name"
-                            name="full_name" 
-                            value="{{ auth()->check() ? auth()->user()->name : '' }}"
-                             />
-                        
-                        <input type="email"
+                        <div class="w-1/2 mr-8">
+                            <label for="name"
+                            class="font-hk text-secondary block mb-2">Name</label>
+                            <input type="text"
+                                placeholder="Full Name"
+                                class="form-input mb-4 sm:mb-5 mr-2"
+                                id="full_name"
+                                name="full_name" 
+                                value="{{ auth()->check() ? auth()->user()->name : old('full_name') }}"
+                                />
+                                @error('full_name')
+                                <div class="text-primary">{{ $message }}</div>
+                                @enderror
+                        </div>
+                       
+                        <div class="w-1/2">
+                            <label for="email"
+                            class="font-hk text-secondary block mb-2">Email</label>
+                            <input type="email"
                             placeholder="Email"
                             class="form-input mb-4 sm:mb-5 ml-1"
                             id="last_name" 
                             name="email" 
-                            value="{{ auth()->check() ? auth()->user()->email : '' }}"
+                            value="{{ auth()->check() ? auth()->user()->email : old('email') }}"
                             />
+                           
+                        </div>
                     </div>
-                    @error('full_name')
-                    <div class="text-primary">{{ $message }}</div>
-                    @enderror
+                   
                     
                     <div class="mt-5">
+                        <label for="address"
+                        class="font-hk text-secondary block mb-2">Address</label>
                         <input type="text"
                             placeholder="You address"
-                            class="form-input mb-4 sm:mb-5"
+                            class="form-input mb-4 sm:mb-5 h-20"
                             id="address"
                             name="address"
                             value="{{ auth()->check() ? auth()->user()->address : '' }}"
                             
                              />
+                             @error('address')
+                             <div class="text-primary">{{ $message }}</div>
+                         @enderror
                     </div>
-                    @error('address')
-                        <div class="text-primary">{{ $message }}</div>
-                    @enderror
+                  
                     
                    
                     

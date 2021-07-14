@@ -64,14 +64,21 @@ class Category extends Model implements HasMedia
     }
 
 
-    public function path()
+    public function nestedPath()
     {
 
-        $path = "/categories/";
+        $path = "/collections/";
         $this->ancestors->each(function($node) use (&$path){
             $path .= $node->slug."/";
         });
         return $path.$this->slug;
+    }
+
+        public function path()
+    {
+
+        return "/collections/".$this->slug;
+       
     }
 
 

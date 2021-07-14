@@ -4,8 +4,9 @@
    <div class="pt-10 sm:pt-12 pb-16 sm:pb-20 lg:pb-24 flex flex-col lg:flex-row justify-between">
 
       @include('site.partials.account-nav')
-      @if($products->count() > 0 )
+      
       <div class="lg:w-3/4 mt-12 lg:mt-0">
+         @if($products->count() > 0 )
          <div class="bg-grey-light py-8 px-5 md:px-8">
             <h1 class="font-hkbold text-secondary text-2xl pb-6 text-center sm:text-left">My Wishlist</h1>
        
@@ -85,20 +86,13 @@
             </div> -->
             {{ $products->links('vendor.pagination.simple-tailwind') }}
             
-         <!--    <div class="pt-6 flex justify-center md:justify-end">
-               <span class="font-hk font-semibold text-grey-darkest transition-colors hover:text-black pr-5 cursor-pointer">Previous</span>
-               <span
-                  class="font-hk font-semibold text-black transition-colors hover:text-white text-sm hover:bg-primary h-6 w-6 rounded-full flex items-center justify-center mr-3 cursor-pointer">1</span>
-               <span
-                  class="font-hk font-semibold text-black transition-colors hover:text-white text-sm hover:bg-primary h-6 w-6 rounded-full flex items-center justify-center mr-3 cursor-pointer">2</span>
-               <span
-                  class="font-hk font-semibold text-black transition-colors hover:text-white text-sm hover:bg-primary h-6 w-6 rounded-full flex items-center justify-center mr-3 cursor-pointer">3</span>
-               <span class="font-hk font-semibold text-grey-darkest transition-colors hover:text-black pl-2 cursor-pointer">Next</span>
-            </div> -->
+        
          </div>
+         @else
+         <div class="bg-grey-light py-8 px-5 md:px-8" >Wishlist Empty!</div>
       </div>
-      @else
-      <div>Wishlist Empty!</div>
+   
+      
       @endif
    </div>
 </div>

@@ -31,21 +31,23 @@ class AttributeValueTest extends TestCase
     //         ->assertSessionHas('message', 'Attribute value removed!');
     // }
 
-    // /** @test */
-    // public function it_can_store_the_attribute_values()
-    // {
-    //     $this->withoutExceptionHandling();
-    //     $attribute = Attribute::factory()->create();
+    /** @test */
+    public function it_can_store_the_attribute_values()
+    {
+        $this->withoutExceptionHandling();
+        $attribute = Attribute::factory()->create();
 
-    //     $this
-    //         ->actingAsEmployee()
-    //         ->post(route('admin.attributes.values.store', $attribute->id), ['value' => 'test'])
-    //         ->assertStatus(302)
-    //         ->assertRedirect(route('admin.attributes.show', $attribute->id))
-    //         ->assertSessionHas('message', 'Attribute value created');
 
-    //     $this->assertCount(1,$attribute->values);
-    // }
+
+        $this
+            ->actingAsEmployee()
+            ->post(route('admin.attributes.values.store', $attribute->id), ['value' => 'test'])
+            ->assertStatus(201);
+            // ->assertRedirect(route('admin.attributes.show', $attribute->id))
+            // ->assertSessionHas('message', 'Attribute value created');
+
+        $this->assertCount(1,$attribute->values);
+    }
 
 
 

@@ -4,8 +4,43 @@
          <p class="font-hk text-secondary-lighter text-lg md:text-xl pt-2 pb-6 sm:pb-8 lg:pb-0">Get the latest news & updates from Elyssi</p>
       </div>
       <div class="product-slider relative"
-         x-data
-         x-init="productSlider">
+      x-data
+      x-init="
+         new Glide($el, {
+             type: 'carousel',
+             startAt: 1,
+             perView: 4,
+             gap: 0,
+             peek: {
+                 before: 50,
+                 after: 50,
+             },
+             breakpoints: {
+                 1024: {
+                     perView: 3,
+                     peek: {
+                         before: 20,
+                         after: 20,
+                     },
+                 },
+                 768: {
+                     perView: 2,
+                     peek: {
+                         before: 10,
+                         after: 10,
+                     },
+                 },
+                 600: {
+                     perView: 1,
+                     peek: {
+                         before: 0,
+                         after: 0,
+                     },
+                 },
+             },
+         })
+         .mount();
+      ">
          <div class="glide__track"
             data-glide-el="track">
             <div class="pt-12 relative glide__slides">
@@ -34,7 +69,7 @@
                               alt="icon cart" />
                            </button>
                            </form>
-                            <a href="{{route('product.show',['slug' => $relatedproduct->slug])}}"
+                            <a href="{{$relatedproduct->path()}}"
                                 class="bg-white hover:bg-primary-light rounded-full p-3 flex items-center transition-all mr-3">
                             <img src="/assets/img/icons/icon-search.svg"
                                 class="h-6 w-6"

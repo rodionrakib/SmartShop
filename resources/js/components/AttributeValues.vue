@@ -15,17 +15,7 @@
                 v-model="value"
             />
         </div>
-        <div class="form-group">
-            <label class="control-label" for="price">Price</label>
-            <input
-                class="form-control"
-                type="number"
-                placeholder="Enter attribute value price"
-                id="price"
-                name="price"
-                v-model="price"
-            />
-        </div>
+      
     </div>
     <div class="tile-footer">
         <div class="row d-print-none mt-2">
@@ -52,7 +42,7 @@
                     <tr class="text-center">
                         <th>#</th>
                         <th>Value</th>
-                        <th>Price</th>
+                       
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -60,7 +50,6 @@
                     <tr v-for="value in values">
                         <td style="width: 25%" class="text-center">{{ value.id}}</td>
                         <td style="width: 25%" class="text-center">{{ value.value}}</td>
-                        <td style="width: 25%" class="text-center">{{ value.price}}</td>
                         <td style="width: 25%" class="text-center">
                             <button class="btn btn-sm btn-primary" @click.stop="editAttributeValue(value)">
 							    <i class="fa fa-edit"></i>
@@ -99,7 +88,7 @@ export default {
         loadValues() {
             let attributeId = this.attributeid;
             let _this = this;
-            axios.post('/admin/attributes/get-values', {
+            axios.get("/admin/attributes/"+attributeId+"/values", {
                 id: attributeId
             }).then (function(response){
                 _this.values = response.data;
@@ -115,7 +104,7 @@ export default {
 		    } else {
 		        let attributeId = this.attributeid;
 		        let _this = this;
-		        axios.post('/admin/attributes/add-values', {
+		        axios.post("/admin/attributes/"+attributeId+"/values", {
 		            id: attributeId,
 		            value: _this.value,
 		            price: _this.price,
@@ -163,6 +152,7 @@ export default {
 		    }
 		},
 		deleteAttributeValue(value) {
+            let attributeId = this.attributeid;
 		    this.$swal({
 		        title: "Are you sure?",
 		        text: "Once deleted, you will not be able to recover this attribute value!",
@@ -174,7 +164,7 @@ export default {
 		            this.currentId = value.id;
 		            this.key = this.values.indexOf(value);
 		            let _this = this;
-		            axios.post('/admin/attributes/delete-values', {
+		            axios.delete("/admin/attributes/"+attributeId+"/values/"+_this.currentId, {
 		                id: _this.currentId
 		            }).then (function(response){
 		                if (response.data.status === 'success') {

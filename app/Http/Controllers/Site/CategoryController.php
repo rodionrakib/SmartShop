@@ -17,9 +17,9 @@ class CategoryController extends Controller
     	elseif ($slug2) {$slug = $slug2;}
     	else{$slug = $slug1;}
 
-    	$category = Category::where('slug', $slug)->first();
+    	$category = Category::with('ancestors')->where('slug', $slug)->first();
     	$breadCrumb = $category->getBreadcrumb();
-    	$products = $category->products()->paginate(8);
+    	$products = $category->products()->paginate(4);
 	    return view('site.pages.category', compact('category','products','breadCrumb')); 
 
     }

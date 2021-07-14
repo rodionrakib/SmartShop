@@ -3,6 +3,9 @@
    <a href="/"
       class="w-full py-3 cursor-pointer font-hk font-medium text-secondary border-b border-grey-dark block ">Home
    </a>
+   <a href="/about"
+      class="w-full py-3 cursor-pointer font-hk font-medium text-secondary border-b border-grey-dark block ">About
+   </a>
   
    <div class="w-full py-3 border-b border-grey-dark block"
       x-data="{
@@ -11,7 +14,7 @@
       <div class="flex items-center justify-between"
          @click="isParentAccordionOpen = !isParentAccordionOpen">
          <span class="font-hk font-medium block transition-colors"
-            :class="isParentAccordionOpen ? 'text-primary' : 'text-secondary'">Shop</span>
+            :class="isParentAccordionOpen ? 'text-primary' : 'text-secondary'">Collection</span>
          <i class="bx text-secondary text-xl"
             :class="isParentAccordionOpen ? 'bx-chevron-down' : 'bx-chevron-left'"></i>
       </div>
@@ -30,11 +33,11 @@
                   class="font-hk font-medium transition-colors"
                   :class="isAccordionOpen ? 'text-primary' : 'text-grey-darkest'">{{$category->name}}</a>
             </div>
-            @if($category->children()->count() > 0 )
+            @if($category->children->count() > 0 )
             <div class="pl-12 transition-all"
                :class="isAccordionOpen ? 'max-h-infinite' : 'max-h-0 overflow-hidden'">
                @foreach($category->children as $cat)
-               <a href="{{$cat->path()}}"
+               <a href="{{$category->path()."/".$cat->slug}}"
                   class="font-hk font-medium text-secondary block mt-2">{{$cat->name}}</a>
                @endforeach
                

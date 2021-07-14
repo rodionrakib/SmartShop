@@ -13,6 +13,7 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "itsgoingd/clockwork": "^5.0",
         "kalnoy/nestedset": "^5.0",
         "lamalama/laravel-wishlist": "^0.2.1",
         "laravel/framework": "^8.12",

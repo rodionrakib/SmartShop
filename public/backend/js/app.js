@@ -1977,17 +1977,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "attribute-values",
   props: ['attributeid'],
@@ -2010,7 +1999,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var _this = this;
 
-      axios.post('/admin/attributes/get-values', {
+      axios.get("/admin/attributes/" + attributeId + "/values", {
         id: attributeId
       }).then(function (response) {
         _this.values = response.data;
@@ -2028,7 +2017,7 @@ __webpack_require__.r(__webpack_exports__);
 
         var _this = this;
 
-        axios.post('/admin/attributes/add-values', {
+        axios.post("/admin/attributes/" + attributeId + "/values", {
           id: attributeId,
           value: _this.value,
           price: _this.price
@@ -2085,6 +2074,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteAttributeValue: function deleteAttributeValue(value) {
       var _this2 = this;
 
+      var attributeId = this.attributeid;
       this.$swal({
         title: "Are you sure?",
         text: "Once deleted, you will not be able to recover this attribute value!",
@@ -2096,7 +2086,7 @@ __webpack_require__.r(__webpack_exports__);
           _this2.currentId = value.id;
           _this2.key = _this2.values.indexOf(value);
           var _this = _this2;
-          axios.post('/admin/attributes/delete-values', {
+          axios["delete"]("/admin/attributes/" + attributeId + "/values/" + _this.currentId, {
             id: _this.currentId
           }).then(function (response) {
             if (response.data.status === 'success') {
@@ -20044,41 +20034,6 @@ var render = function() {
               }
             }
           })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c(
-            "label",
-            { staticClass: "control-label", attrs: { for: "price" } },
-            [_vm._v("Price")]
-          ),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.price,
-                expression: "price"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              type: "number",
-              placeholder: "Enter attribute value price",
-              id: "price",
-              name: "price"
-            },
-            domProps: { value: _vm.price },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.price = $event.target.value
-              }
-            }
-          })
         ])
       ]),
       _vm._v(" "),
@@ -20185,15 +20140,6 @@ var render = function() {
                       staticClass: "text-center",
                       staticStyle: { width: "25%" }
                     },
-                    [_vm._v(_vm._s(value.price))]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "td",
-                    {
-                      staticClass: "text-center",
-                      staticStyle: { width: "25%" }
-                    },
                     [
                       _c(
                         "button",
@@ -20244,8 +20190,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("#")]),
         _vm._v(" "),
         _c("th", [_vm._v("Value")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Price")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")])
       ])
