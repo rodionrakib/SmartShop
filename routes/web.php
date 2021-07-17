@@ -52,6 +52,7 @@ Route::get('/contact-success',[PageController::class,'contactSuccess'])->name('c
 Route::post('/contact',[PageController::class,'contactStore'])->name('contact');
 
 Route::get('/faq',[PageController::class,'faq'])->name('faq');
+Route::get('/collections',[PageController::class,'collections'])->name('collections');
 
 
 Route::post('/cart',[CartController::class,'store'])->name('cart.store');

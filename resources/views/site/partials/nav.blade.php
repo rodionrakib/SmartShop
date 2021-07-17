@@ -12,7 +12,7 @@
 
    <li class="mr-10 hidden lg:block group">
       <div class="border-b-2 border-white transition-colors group-hover:border-primary flex items-center">
-         <a href="/shop" class="  cursor-pointer text-lg font-hk group-hover:font-bold text-secondary group-hover:text-primary px-2 transition-all">Collections</a>
+         <a href="{{ route('collections') }}" class="  cursor-pointer text-lg font-hk group-hover:font-bold text-secondary group-hover:text-primary px-2 transition-all">Collections</a>
          <i class="bx bx-chevron-down text-secondary group-hover:text-primary pl-2 px-2 transition-colors"></i>
       </div>
       <div

@@ -5,11 +5,18 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Contact;
-
-
+use App\Models\Product;
 
 class PageController extends Controller
 {
+
+    public function collections()
+    {
+
+        return view('site.pages.collections',[
+            'products' =>  Product::where('status',true)->latest()->paginate(10)
+        ]);
+    }
 
     public function contactStore(Request $request)
     {

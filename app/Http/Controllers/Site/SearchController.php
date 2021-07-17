@@ -17,7 +17,7 @@ class SearchController extends Controller
                 ->orWhere('short_description','like',"%".request('search')."%");
         }
         return view('site.pages.search',[
-            'products' => $products->paginate(4)
+            'products' => $products->paginate(8)
         ]);
     }
 }

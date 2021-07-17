@@ -13,7 +13,7 @@
                         <div class="bg-left sm:bg-center bg-no-repeat bg-cover"
                             style="background-image:url({{$slider->coverImagePath()}})">
                             <div class="py-48 px-5 sm:px-10 md:px-12 xl:px-24 text-center sm:text-left sm:w-5/6 lg:w-3/4 xl:w-2/3">
-                                <h3 class=" font-butler font-medium text-secondary text-3xl sm:text-4xl md:text-5xl lg:text-6xl">{{$slider->title}}</h3>
+                                <h3 class=" font-butler font-medium text-secondary text-3xl sm:text-4xl md:text-5xl lg:text-6xl">{!!$slider->title!!}</h3>
                                 <a href="{{$slider->link}}"
                                     class="btn btn-primary btn-lg mt-8">Know more</a>
                             </div>

@@ -21,6 +21,7 @@
                     <div class="col-4">Placed By
                         <address><strong>{{ $order->full_name }}</strong><br>Email: {{ $order->email }}</address>
                         <address><strong>Note</strong><br> {{ $order->notes }}</address>
+                        <address><strong>Order Type</strong><br> {{ $order->user_id ? 'Account Customer' : 'Guest Order' }}</address>
 
                     </div>
                     <div class="col-4">Ship To

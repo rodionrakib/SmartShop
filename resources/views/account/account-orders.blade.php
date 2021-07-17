@@ -31,7 +31,7 @@
                       <span class="font-hkbold text-secondary text-sm uppercase text-center pb-2 block sm:hidden">Product Name</span>
                       <div class="w-20 mx-auto sm:mx-0 relative sm:mr-3 sm:pr-0">
                           <div class="aspect-w-1 aspect-h-1 w-full">
-                              <img src="https://source.unsplash.com/1000x640/?oes-3"
+                              <img src="{{$item->product->getThumbPath()}}"
                                   alt="product image"
                                   class="object-cover" />
                           </div>

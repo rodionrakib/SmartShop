@@ -132,7 +132,7 @@
                </div>
             </div>
             <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center pt-8 sm:pt-12">
-               <a href="/collection-list"
+               <a href="{{route('home')}}"
                   class="btn btn-outline">Continue Shopping</a>
                <button type="submit" 
                   class="btn btn-primary mt-5 sm:mt-0">Update Cart
@@ -140,7 +140,7 @@
             </div>
             @else
             <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center pt-8 sm:pt-12">
-               <a href="/collection-list"
+               <a href="{{route('home')}}"
                   class="btn btn-outline">Continue Shopping</a>
                <span  
                   class="mt-5 sm:mt-0 text-primary">Cart is empty

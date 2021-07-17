@@ -13,8 +13,9 @@
       }">
       <div class="flex items-center justify-between"
          @click="isParentAccordionOpen = !isParentAccordionOpen">
+         <a href="{{ route('collections') }}">
          <span class="font-hk font-medium block transition-colors"
-            :class="isParentAccordionOpen ? 'text-primary' : 'text-secondary'">Collection</span>
+            :class="isParentAccordionOpen ? 'text-primary' : 'text-secondary'">Collections</span></a>
          <i class="bx text-secondary text-xl"
             :class="isParentAccordionOpen ? 'bx-chevron-down' : 'bx-chevron-left'"></i>
       </div>
